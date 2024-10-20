@@ -1,11 +1,34 @@
-import { MarketContent } from './MarketContent'
-import { MarketHeader } from './MarketHeader'
-import { MarketRoot } from './MarketRoot'
-import { MarketSelections } from './MarketSelections'
+import { MarketType } from 'types/events'
 
-export const Market = {
-  Root: MarketRoot,
-  Content: MarketContent,
-  Header: MarketHeader,
-  Selections: MarketSelections
+import * as S from './styles'
+
+interface MarketProps {
+  market: MarketType
+  isLast: boolean
 }
+
+const Market = ({ market, isLast }: MarketProps) => {
+  return (
+    <S.Root key={market.id}>
+      <S.Content isLast={isLast}>
+        <S.Header>
+          <S.NameMarket>{market.name}</S.NameMarket>
+        </S.Header>
+        <S.Selections>
+          {market.selections.map((selection) => (
+            <S.Selection key={selection.id} isSelected={false}>
+              <S.SelectionName isSelected={false}>
+                {selection.name}
+              </S.SelectionName>
+              <S.SelectionOdd isSelected={false}>
+                {selection.price}
+              </S.SelectionOdd>
+            </S.Selection>
+          ))}
+        </S.Selections>
+      </S.Content>
+    </S.Root>
+  )
+}
+
+export default Market
