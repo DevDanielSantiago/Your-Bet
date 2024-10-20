@@ -17,3 +17,9 @@ export type SelectionType = {
   name: string
   price: number
 }
+
+export type MarketSelectionType = {
+  idEvent: string
+  idMarket: string
+  idSelection: string
+}
