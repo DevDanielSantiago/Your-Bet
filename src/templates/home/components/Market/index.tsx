@@ -37,7 +37,10 @@ const Market = ({ market, isLast, idEvent }: MarketProps) => {
                 onClick={handleMarket({
                   idEvent: idEvent,
                   idMarket: market.id,
-                  idSelection: selection.id
+                  idSelection: selection.id,
+                  marketName: market.name,
+                  selectionName: selection.name,
+                  selectionPrice: selection.price
                 })}
               >
                 <S.SelectionName isSelected={!!idSelected}>

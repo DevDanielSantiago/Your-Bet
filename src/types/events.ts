@@ -22,4 +22,7 @@ export type MarketSelectionType = {
   idEvent: string
   idMarket: string
   idSelection: string
+  marketName: string
+  selectionName: string
+  selectionPrice: number
 }
