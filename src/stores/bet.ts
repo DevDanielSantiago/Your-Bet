@@ -32,7 +32,6 @@ export const useBetStore = create<BetState>((set, get) => ({
         )
     )
 
-    console.log([...filterSelections, selection])
     set({ selections: [...filterSelections, selection] })
   },
   removeSelection: (selection) => {
@@ -40,11 +39,13 @@ export const useBetStore = create<BetState>((set, get) => ({
 
     const filterSelections = selections.filter(
       (value) =>
-        value.idEvent !== value.idEvent &&
-        value.idMarket !== selection.idMarket &&
-        value.idSelection !== selection.idSelection
+        !(
+          value.idEvent === value.idEvent &&
+          value.idMarket === selection.idMarket &&
+          value.idSelection === selection.idSelection
+        )
     )
 
-    set({ selections: [...filterSelections, selection] })
+    set({ selections: [...filterSelections] })
   }
 }))
